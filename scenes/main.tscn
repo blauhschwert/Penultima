@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://crptpdk4a64qp"]
+
+[ext_resource type="Texture2D" uid="uid://bxrmww8jtoejx" path="res://assets/Untitled.png" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bwyj1h53a61t0" path="res://scenes/player/player.tscn" id="2_0wfyh"]
+
+[node name="main" type="Node2D"]
+
+[node name="battleground" type="Sprite2D" parent="."]
+texture = ExtResource("1_o5qli")
+centered = false
+
+[node name="player" parent="." instance=ExtResource("2_0wfyh")]
+position = Vector2(86, 119)
+scale = Vector2(2, 2)
