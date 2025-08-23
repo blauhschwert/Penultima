@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsdw82iahteli"
-path="res://.godot/imported/Untitled copy.png-85d2bc5c5af93ecc16ce329969d489a4.ctex"
+uid="uid://bpy8rn6mobmv1"
+path="res://.godot/imported/shrub_00.png-fdfc56ee4ae283074adde0154931872e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Untitled copy.png"
-dest_files=["res://.godot/imported/Untitled copy.png-85d2bc5c5af93ecc16ce329969d489a4.ctex"]
+source_file="res://assets/shrub_00.png"
+dest_files=["res://.godot/imported/shrub_00.png-fdfc56ee4ae283074adde0154931872e.ctex"]
 
 [params]
 
