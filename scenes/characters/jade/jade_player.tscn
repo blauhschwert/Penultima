@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn8ij7btivfx4"]
+
+[ext_resource type="PackedScene" uid="uid://b5787fnwgp4qt" path="res://scenes/characters/jade/jademanition.tscn" id="1_6kmyr"]
+[ext_resource type="Script" uid="uid://cf58nds100ir8" path="res://scenes/characters/jade/jademanition.gd" id="2_h2mg0"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Jademanition" parent="." instance=ExtResource("1_6kmyr")]
+script = ExtResource("2_h2mg0")
