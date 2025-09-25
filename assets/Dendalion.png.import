@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gb6orxjksjh3"
-path="res://.godot/imported/player_final.png-f56bb4c4d8d8ea8f587be2b51bdfcc9a.ctex"
+uid="uid://bwyrjturf4eby"
+path="res://.godot/imported/Dendalion.png-48ba3bf0031b221b38c3732c525d735e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player_final.png"
-dest_files=["res://.godot/imported/player_final.png-f56bb4c4d8d8ea8f587be2b51bdfcc9a.ctex"]
+source_file="res://assets/Dendalion.png"
+dest_files=["res://.godot/imported/Dendalion.png-48ba3bf0031b221b38c3732c525d735e.ctex"]
 
 [params]
 
