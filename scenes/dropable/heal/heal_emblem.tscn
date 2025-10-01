@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://8iunpyee0toj"]
+
+[sub_resource type="Curve" id="Curve_er15j"]
+_data = [Vector2(0.545098, 0.5632812), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[node name="HealPotion" type="Node2D"]
+
+[node name="Verti" type="Line2D" parent="."]
+position = Vector2(0, -8)
+points = PackedVector2Array(0, 0, 0, 16)
+width = 5.0
+width_curve = SubResource("Curve_er15j")
+default_color = Color(1, 0, 0, 1)
+texture_mode = 1
+
+[node name="Hori" type="Line2D" parent="."]
+position = Vector2(0, -8)
+points = PackedVector2Array(-8, 8, 8, 8)
+width = 5.0
+width_curve = SubResource("Curve_er15j")
+default_color = Color(1, 0.029999971, 0.029999971, 1)

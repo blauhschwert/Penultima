@@ -1,0 +1,14 @@
+Old JadePlayer
+func _physics_process(_delta):
+	var dir = Input.get_vector("move_left","move_right",
+									 "move_up","move_down")
+	
+	velocity = dir * 135
+	move_and_slide()
+	
+	_direction = dir
+
+	if velocity.length() > 0.0:
+		$Jademanition.play_walk_anim(_direction)
+	else:
+		%Jademanition.play_idle_animation()

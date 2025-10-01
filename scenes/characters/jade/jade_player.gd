@@ -1,61 +1,78 @@
-class_name JadePlyer
+class_name JadePlayer
 extends CharacterBody2D
 
 signal health_depleted
 
-enum State {RESET, IDLE, WALK, ATTACK, DASH}
-var _state : State = State.RESET
+@export_enum("Sword","Dendalion") var weapon_class : int
 
-var health = 100.0 
+const DENDALION = preload("res://scenes/characters/dendalion/dendalion.tscn")
+const SLASH = preload("res://scenes/characters/attacks/slash/slash.tscn")
 
-@onready var _anim_player : AnimationPlayer = $Jademanition/AnimationPlayer
-@onready var _jademani : Jademanition = %Jademanition
+@export var speed := 350
 
-var _direction = Vector2.ZERO
+var health = 100.0
+var attack_buff = []
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack"):
-		set_jade_state(State.ATTACK)
-		print(_state)
+
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
+@onready var slash_timer : Timer = $SlashTimer
+@onready var hurtbox : Area2D = %HurtBox
+@onready var _dendalion : Dendelion = $DendalionGun 
+
+@onready var jade_progressbar : ProgressBar = %ProgressBar
+@onready var _slash : Slash = $Slash
+
    
 func _ready():
-	_anim_player.animation_finished.connect(_on_animation_finished)
+	slash_timer.timeout.connect(_create_slash)
+	slash_timer.paused = true
+	
 
 func _physics_process(_delta):
-	var direction = Input.get_vector("move_left","move_right",
-		"move_up","move_down")
-	velocity = direction * 135
-	move_and_slide()
-	
-	_direction = direction
-
-	if velocity.length() > 0.0:
-		$Jademanition.play_walk_animation(direction)
-	else:
-		%Jademanition.play_idle_animation()
-		
 	const DAMAGE_RATE = 15.0
 	var overlapping_mobs = %HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * _delta
-		%ProgressBar.value = health
+		jade_progressbar.value = health
 		if health <= 0.0:
 			health_depleted.emit()
 
-func set_jade_state(p_state : State = State.RESET) -> void:
-	if _state == p_state:
-		return
-	_state = p_state
-	match _state:
-		State.RESET:
-			_jademani.toggle_jade_movement(true)
-			_anim_player.play("idle")
-		State.IDLE:
-			$Jademanition.play_idle_animation()
-		State.ATTACK:
-			$Jademanition.play_attack_animation(_direction)
+func set_attack_buff(p_array : Array) -> void:
+	attack_buff = p_array
 
-func _on_animation_finished(anim_name : String) -> void:
-	match anim_name:
-		"idle":
-			pass
+func set_jade_buff(p_array : Array) -> void:
+	if _dendalion != null:
+		_dendalion.change_bullet_spell(p_array)
+
+func update_health(amount : float) -> void:
+	health += amount
+	%ProgressBar.value = health
+
+func _create_slash() -> void:
+	var new_slash = SLASH.instantiate() 
+	add_child(new_slash)
+	_slash = new_slash
+
+
+func _on_mobile_control_switch_weapon(weapon: String) -> void:
+	print(weapon)
+	match weapon:
+		"Sword":
+			# Free old weapon
+			_dendalion.enable_dendalion(false)
+			_dendalion.queue_free()
+			slash_timer.paused = false
+			
+			slash_timer.start(1.05)
+			
+		"Dendalion":
+			slash_timer.stop()
+			
+			var new_dendalion = DENDALION.instantiate()
+			_dendalion = new_dendalion
+			new_dendalion.enable_dendalion(true)
+			add_child(new_dendalion)
+
+
+func _on_slash_timer_timeout() -> void:
+	_create_slash()

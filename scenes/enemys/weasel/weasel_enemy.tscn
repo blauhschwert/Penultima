@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://ytq1v0fbm816"]
 
-[ext_resource type="PackedScene" uid="uid://b06cuhmav06y7" path="res://scenes/enemys/weasel/weasalmation.tscn" id="1_68l3c"]
+[ext_resource type="PackedScene" uid="uid://b06cuhmav06y7" path="res://scenes/enemys/weasel/walk/weaselwalk.tscn" id="1_68l3c"]
 [ext_resource type="Script" uid="uid://cqabt3kj6wkrr" path="res://scenes/enemys/weasel/weasel_enemy.gd" id="1_rxt4r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cj5q5"]
 radius = 4.0
 height = 14.0
 
-[node name="Weasel" type="CharacterBody2D"]
+[node name="Weasel" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
-collision_layer = 2
-collision_mask = 3
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_rxt4r")
 
-[node name="Weaselmation" parent="." instance=ExtResource("1_68l3c")]
+[node name="Weaselwalk" parent="." instance=ExtResource("1_68l3c")]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

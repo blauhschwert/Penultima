@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq4qp6n22bdwy"]
+[gd_scene load_steps=9 format=3 uid="uid://bq4qp6n22bdwy"]
 
 [ext_resource type="Script" uid="uid://bojtyqbcwnbio" path="res://scenes/main_game.gd" id="1_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://dtl186wdq35t6" path="res://scenes/world/world.tscn" id="1_s3esy"]
 [ext_resource type="PackedScene" uid="uid://bn8ij7btivfx4" path="res://scenes/characters/jade/jade_player.tscn" id="2_72e8q"]
-[ext_resource type="PackedScene" uid="uid://bwxe17y5i46ne" path="res://scenes/tree/tree.tscn" id="3_d2op2"]
+[ext_resource type="PackedScene" uid="uid://bwxe17y5i46ne" path="res://scenes/world/tree/tree.tscn" id="3_d2op2"]
+[ext_resource type="PackedScene" uid="uid://dyansdmcx5dbo" path="res://scenes/UI/ui_controller.tscn" id="5_ipu61"]
+[ext_resource type="PackedScene" uid="uid://bl844wo7sr135" path="res://scenes/UI/game_ui/game_ui.tscn" id="6_ygxny"]
+[ext_resource type="AudioStream" uid="uid://codtk6d36pl6y" path="res://Mein Song 2.wav" id="7_wi4c7"]
 
 [sub_resource type="Curve2D" id="Curve2D_ipu61"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2102, -985, 0, 0, 0, 0, 1514, -983, 0, 0, 0, 0, 1514, 1256, 0, 0, 0, 0, -2085, 1251, 0, 0, 0, 0, -2102, -985)
+"points": PackedVector2Array(0, 0, 0, 0, 398.0359, -408.82813, 0, 0, 0, 0, 413.56897, 1237.5338, 0, 0, 0, 0, -1452.3455, 1223.722, 0, 0, 0, 0, -1465.937, -389.49167, 0, 0, 0, 0, 398.0359, -408.82813)
 }
 point_count = 5
 
@@ -16,16 +19,17 @@ y_sort_enabled = true
 script = ExtResource("1_0rdsr")
 
 [node name="Player" parent="." instance=ExtResource("2_72e8q")]
+collision_mask = 2
 
 [node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(418, 11)
-scale = Vector2(0.65818584, 0.57518965)
+scale = Vector2(0.515029, 0.36201033)
 curve = SubResource("Curve2D_ipu61")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
-position = Vector2(-2102, -985)
-rotation = 0.0005530973
+position = Vector2(398.0359, -408.82813)
+rotation = 1.5613618
 
 [node name="Node" parent="." instance=ExtResource("1_s3esy")]
 
@@ -33,25 +37,26 @@ rotation = 0.0005530973
 
 [node name="Tree" parent="Trees" instance=ExtResource("3_d2op2")]
 position = Vector2(527, -38)
+collision_layer = 0
 
 [node name="Tree2" parent="Trees" instance=ExtResource("3_d2op2")]
-position = Vector2(-472, -209)
+position = Vector2(-253, -61)
 
 [node name="Tree3" parent="Trees" instance=ExtResource("3_d2op2")]
-position = Vector2(1458, 178)
+position = Vector2(288, 353)
 
 [node name="Tree4" parent="Trees" instance=ExtResource("3_d2op2")]
-position = Vector2(1002, -505)
+position = Vector2(273, 331)
 
 [node name="Tree5" parent="Trees" instance=ExtResource("3_d2op2")]
-position = Vector2(-981, 235)
+position = Vector2(367, 243)
 
 [node name="Tree6" parent="Trees" instance=ExtResource("3_d2op2")]
-position = Vector2(894, 614)
+position = Vector2(565, 401)
 
 [node name="Tree7" parent="Trees" instance=ExtResource("3_d2op2")]
 y_sort_enabled = true
-position = Vector2(141, -609)
+position = Vector2(255, 337)
 
 [node name="Tree8" parent="Trees" instance=ExtResource("3_d2op2")]
 position = Vector2(541, -26)
@@ -61,13 +66,33 @@ position = Vector2(554, -37)
 
 [node name="Tree10" parent="Trees" instance=ExtResource("3_d2op2")]
 y_sort_enabled = true
-position = Vector2(356, -760)
+position = Vector2(390, 212)
 
 [node name="Tree11" parent="Trees" instance=ExtResource("3_d2op2")]
-position = Vector2(756, -177)
+position = Vector2(435, -84)
 
 [node name="Tree12" parent="Trees" instance=ExtResource("3_d2op2")]
-position = Vector2(769, -188)
+position = Vector2(448, -95)
+
+[node name="Spots" type="Node2D" parent="."]
+
+[node name="HealingSpots" type="Marker2D" parent="Spots"]
+position = Vector2(269, 345)
+
+[node name="HealingSpots2" type="Marker2D" parent="Spots"]
+position = Vector2(393, 222)
+
+[node name="HealingSpots3" type="Marker2D" parent="Spots"]
+position = Vector2(525, -23)
+
+[node name="HealingSpots4" type="Marker2D" parent="Spots"]
+position = Vector2(462, -84)
+
+[node name="HealingSpots5" type="Marker2D" parent="Spots"]
+position = Vector2(-235, -54)
+
+[node name="HealingSpots6" type="Marker2D" parent="Spots"]
+position = Vector2(553, 406)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -101,4 +126,12 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Game Over"
 
+[node name="MobileControl" parent="." instance=ExtResource("5_ipu61")]
+
+[node name="GameUI" parent="." instance=ExtResource("6_ygxny")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_wi4c7")
+
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="switchWeapon" from="MobileControl" to="Player" method="_on_mobile_control_switch_weapon"]
