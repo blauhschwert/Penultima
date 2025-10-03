@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AttackStats" load_steps=3 format=3 uid="uid://cfckje1g5kdtw"]
+
+[ext_resource type="Texture2D" uid="uid://c0d1cdtt80cyj" path="res://assets/Bullet.png" id="1_cavia"]
+[ext_resource type="Script" uid="uid://c81pi7ndhgy5m" path="res://scenes/Resources/Attack/AttackStats.gd" id="1_o4kqq"]
+
+[resource]
+script = ExtResource("1_o4kqq")
+damage = 2
+durabilty = 5.0
+shoot_rate = 0.15
+attack_range = 250.0
+attack_texture = ExtResource("1_cavia")
+metadata/_custom_type_script = "uid://c81pi7ndhgy5m"

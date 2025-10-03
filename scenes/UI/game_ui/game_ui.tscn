@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl844wo7sr135"]
+
+[ext_resource type="Script" uid="uid://cs7t16frp0e23" path="res://scenes/UI/game_ui/game_ui.gd" id="1_5dpps"]
+[ext_resource type="Theme" uid="uid://cebxge1v74an7" path="res://scenes/UI/game_ui/game_ui.tres" id="2_pgk80"]
+[ext_resource type="PackedScene" uid="uid://bcuqfjrcka4sx" path="res://scenes/UI/game_ui/score_bonus.tscn" id="3_vplj1"]
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_5dpps")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pgk80")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 0.22500001
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = -15.666664
+grow_horizontal = 2
+text = "  Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreBonus" parent="." instance=ExtResource("3_vplj1")]
+position = Vector2(132, 34)

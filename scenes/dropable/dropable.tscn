@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dstg0y132x4"]
+
+[ext_resource type="Script" uid="uid://b2a3pah3b07em" path="res://scenes/dropable/dropable.gd" id="1_h3vmn"]
+[ext_resource type="PackedScene" uid="uid://cqqixlw8hmhux" path="res://scenes/dropable/fire_rate/fire_rate.tscn" id="2_oxnyf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxnyf"]
+radius = 6.0
+
+[node name="Dropable" type="Area2D" node_paths=PackedStringArray("reward_drop")]
+z_index = 1
+script = ExtResource("1_h3vmn")
+reward_drop = NodePath("FireRate")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+z_index = 1
+shape = SubResource("CircleShape2D_oxnyf")
+
+[node name="FireRate" parent="." instance=ExtResource("2_oxnyf")]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

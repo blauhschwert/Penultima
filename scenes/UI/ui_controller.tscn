@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyansdmcx5dbo"]
+
+[ext_resource type="Script" uid="uid://ph7t60mnpafk" path="res://scenes/UI/ui_controller.gd" id="1_ken3r"]
+[ext_resource type="PackedScene" uid="uid://b83ikfjko3npx" path="res://scenes/UI/virtuel_joystick.tscn" id="6_dbrdc"]
+[ext_resource type="Texture2D" uid="uid://blk2vu4gg7a8d" path="res://assets/Button/F0.png" id="11_pxwk2"]
+[ext_resource type="Texture2D" uid="uid://cumyy4dbqh803" path="res://assets/Button/F2.png" id="12_ruk1r"]
+
+[node name="MobileControl" type="CanvasLayer"]
+script = ExtResource("1_ken3r")
+
+[node name="UIControler" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Joystick" type="Node2D" parent="UIControler"]
+position = Vector2(91, 139.00002)
+scale = Vector2(1.3, 1.3)
+
+[node name="A_Button" type="TouchScreenButton" parent="UIControler/Joystick"]
+position = Vector2(126.923065, -8.461536)
+texture_normal = ExtResource("11_pxwk2")
+texture_pressed = ExtResource("12_ruk1r")
+action = "attack"
+
+[node name="VirtuelJoystick" parent="UIControler/Joystick" instance=ExtResource("6_dbrdc")]
+
+[connection signal="pressed" from="UIControler/Joystick/A_Button" to="." method="_on_a_button_pressed"]
