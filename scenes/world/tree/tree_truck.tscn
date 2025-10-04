@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://yt7dukmbl2dt"]
+
+[ext_resource type="Texture2D" uid="uid://b0flyp7u2ar36" path="res://assets/tree_truck.png" id="1_xd18v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ftg3w"]
+radius = 4.998835
+
+[node name="treetruck" type="StaticBody2D"]
+disable_mode = 1
+collision_layer = 9
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xd18v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.0000005)
+rotation = -1.5624913
+shape = SubResource("CapsuleShape2D_ftg3w")

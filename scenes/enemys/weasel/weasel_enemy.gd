@@ -31,6 +31,6 @@ func take_damage(amount):
 		const DROPABLE_SCENE = preload("res://scenes/dropable/dropable.tscn")
 		var rare_drop = DROPABLE_SCENE.instantiate()
 		rare_drop.drop_reward(global_position)
-		get_node("/root/MainGame/AttackBuffs").add_child(rare_drop)
+		get_node("/root/MainGame/AttackBuffs").add_child.call_deferred(rare_drop)
 		
 		queue_free()

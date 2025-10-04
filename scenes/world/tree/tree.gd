@@ -2,9 +2,10 @@ class_name PixelTree
 extends StaticBody2D
 
 
-var tree_00 = preload("res://assets/Tree00.png")
-var tree_01 = preload("res://assets/Tree01.png")
-var tree_02 = preload("res://assets/Tree02.png")
+var tree_00 = preload("res://assets/tree00.png")
+var tree_01 = preload("res://assets/tree01.png")
+var tree_02 = preload("res://assets/tree02.png")
+var tree_03 = preload("res://assets/tree03.png")
 
 
 func _ready() -> void:
