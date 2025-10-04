@@ -36,6 +36,8 @@ rotation = 1.5613618
 
 [node name="Node" parent="." instance=ExtResource("1_s3esy")]
 
+[node name="AttackBuffs" type="Node" parent="."]
+
 [node name="Trees" type="Node2D" parent="."]
 
 [node name="Tree" parent="Trees" instance=ExtResource("3_d2op2")]

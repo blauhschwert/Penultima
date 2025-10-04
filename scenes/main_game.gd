@@ -55,6 +55,8 @@ func _on_timer_timeout():
 func _reload_game() -> void:
 	get_tree().reload_current_scene()
 	CounterMobs.surpassed_enemys = 0
+	for n in get_node("AttackBuffs").get_children():
+		n.queue_free()
 	if $%GameOver.visible:
 		%GameOver.visible = false 
 

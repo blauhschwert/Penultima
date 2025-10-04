@@ -1,15 +1,16 @@
 extends JadeState
 
-var jade_dir := Vector2.ZERO
+var _jade_dir := Vector2.ZERO
 
 ## If state is created or used : 
 ## - finished.emit(WALKING,{"direction":direction})
 ## - { "direction": (0.0, -1.0) }
 func enter(_previous_state_path: String, _data := {}) -> void:
+	_jade_dir = _data["dir"]
 	jade_player = jade.anim_player
 
 func handle_input(_event: InputEvent) -> void:
-	jade_dir = Input.get_vector("move_left","move_right","move_up","move_down")
+	_jade_dir = Input.get_vector("move_left","move_right","move_up","move_down")
 
 func physics_update(_delta: float) -> void:
 	jade.velocity = jade.direction * jade.speed

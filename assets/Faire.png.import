@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tiiopemor335"
-path="res://.godot/imported/F1.png-e4ef2601f274293be4d88b0a3b06a913.ctex"
+uid="uid://dpsh8i650akkv"
+path="res://.godot/imported/Faire.png-e2345641cae649c9630a9a010c14ee70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Gems/F1.png"
-dest_files=["res://.godot/imported/F1.png-e4ef2601f274293be4d88b0a3b06a913.ctex"]
+source_file="res://assets/Faire.png"
+dest_files=["res://.godot/imported/Faire.png-e2345641cae649c9630a9a010c14ee70.ctex"]
 
 [params]
 

@@ -8,7 +8,7 @@ signal health_depleted
 const DENDALION = preload("res://scenes/character/dendalion/dendalion.tscn")
 const SLASH = preload("res://scenes/character/attacks/slash/slash.tscn")
 
-@export var speed := 210
+@export var speed := 135
 
 var health = 100.0
 var attack_buff = []
@@ -37,6 +37,7 @@ func _create_slash() -> void:
 	var new_slash = SLASH.instantiate() 
 	add_child(new_slash)
 	_slash = new_slash
+	_slash.visible = true
 
 func _on_mobile_control_switch_weapon(weapon: String) -> void:
 	print(weapon)

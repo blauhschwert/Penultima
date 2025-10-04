@@ -20,19 +20,22 @@ var _enabled : bool = false
 
 
 func _ready() -> void:
-	_anim_player.play("slash")
+	pass
 
 func endable_slash(p_bool : bool) -> void:
 	set_process(p_bool)
 	_enabled = p_bool
 
+func play() -> void:
+	_anim_player.play("slash")
+
 func _on_body_entered(_body: Node2D) -> void:
 	if has_overlapping_bodies():
 		intersect_mobs = get_overlapping_bodies()
 		for e in intersect_mobs:
+			play()
 			if e.has_method("take_damage"):
 				e.take_damage(damage)
-
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "slash":
