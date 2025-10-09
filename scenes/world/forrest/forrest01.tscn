@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://co1a8s3y6gp6d"]
+
+[ext_resource type="Script" uid="uid://0lpxvv2dat5k" path="res://scenes/world/forrest/forrest.gd" id="1_5v76o"]
+[ext_resource type="PackedScene" uid="uid://c7uq32rt1tam6" path="res://scenes/world/forrest/tree01.tscn" id="2_vgitk"]
+[ext_resource type="PackedScene" uid="uid://cd0sxplmvihgd" path="res://scenes/world/forrest/tree_00.tscn" id="3_c13yh"]
+[ext_resource type="PackedScene" uid="uid://clqmu7iwq4gpm" path="res://scenes/world/forrest/tree_02.tscn" id="4_shuuf"]
+[ext_resource type="PackedScene" uid="uid://bvmve8imy62sq" path="res://scenes/world/forrest/tree_03.tscn" id="5_5167q"]
+
+[node name="Forrest00" type="Node2D"]
+script = ExtResource("1_5v76o")
+
+[node name="wide" parent="." instance=ExtResource("2_vgitk")]
+z_index = 2
+position = Vector2(4, 35)
+scale = Vector2(1.5, 1.5)
+collision_layer = 1
+collision_mask = 1
+
+[node name="wide2" parent="." instance=ExtResource("2_vgitk")]
+z_index = 2
+position = Vector2(38, 49)
+scale = Vector2(1.5, 1.5)
+collision_layer = 1
+collision_mask = 1
+
+[node name="round" parent="." instance=ExtResource("3_c13yh")]
+z_index = 1
+position = Vector2(-18, 34)
+scale = Vector2(1.5, 1.5)
+
+[node name="round5" parent="." instance=ExtResource("3_c13yh")]
+z_index = 1
+position = Vector2(49, 40)
+scale = Vector2(1.5, 1.5)
+
+[node name="round2" parent="." instance=ExtResource("3_c13yh")]
+z_index = 1
+position = Vector2(-18, 34)
+scale = Vector2(1.5, 1.5)
+
+[node name="round4" parent="." instance=ExtResource("3_c13yh")]
+z_index = 1
+position = Vector2(25, 34)
+scale = Vector2(1.5, 1.5)
+
+[node name="round3" parent="." instance=ExtResource("3_c13yh")]
+z_index = 1
+position = Vector2(-37, 26)
+scale = Vector2(1.5, 1.5)
+
+[node name="little" parent="." instance=ExtResource("4_shuuf")]
+z_index = 2
+position = Vector2(14, 42)
+collision_layer = 1
+collision_mask = 1
+
+[node name="naked" parent="." instance=ExtResource("5_5167q")]
+z_index = 2
+position = Vector2(-6, 41)
+collision_layer = 1
+collision_mask = 1

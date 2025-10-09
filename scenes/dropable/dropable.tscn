@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dstg0y132x4"]
+
+[ext_resource type="Script" uid="uid://b2a3pah3b07em" path="res://scenes/dropable/dropable.gd" id="1_h3vmn"]
+[ext_resource type="PackedScene" uid="uid://cqqixlw8hmhux" path="res://scenes/dropable/fire_rate/fire_rate.tscn" id="2_oxnyf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxnyf"]
+radius = 6.0
+
+[node name="Dropable" type="Area2D"]
+z_index = 1
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_h3vmn")
+reward_drop = Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://scenes/dropable/fire_rate/fire_rate.gd"),"attack_stats":Resource("res://scenes/dropable/fire_rate/basic_fire_rate_buff.tres"))
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("CircleShape2D_oxnyf")
+
+[node name="FireRate" parent="." instance=ExtResource("2_oxnyf")]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

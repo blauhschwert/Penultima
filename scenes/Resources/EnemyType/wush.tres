@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://blx3cusf8lb73"]
+
+[ext_resource type="Script" uid="uid://ba187r1tj1rg7" path="res://scenes/Resources/EnemyType/EnemyType.gd" id="1_dt4o2"]
+[ext_resource type="Texture2D" uid="uid://bitrk6klqvkse" path="res://assets/enemys/wush.png" id="2_o031g"]
+
+[resource]
+script = ExtResource("1_dt4o2")
+title = "Wush"
+texture = ExtResource("2_o031g")
+metadata/_custom_type_script = "uid://ba187r1tj1rg7"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://cra5tcdjdbjku"]
+
+[ext_resource type="Script" uid="uid://ba187r1tj1rg7" path="res://scenes/Resources/EnemyType/EnemyType.gd" id="1_4vlx3"]
+[ext_resource type="Texture2D" uid="uid://rmeq3kjue3qn" path="res://assets/enemys/golemm.png" id="2_evwvj"]
+
+[resource]
+script = ExtResource("1_4vlx3")
+title = "Golem"
+texture = ExtResource("2_evwvj")
+damage = 3.0
+metadata/_custom_type_script = "uid://ba187r1tj1rg7"

@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6unyds8fh2r8"]
+
+[ext_resource type="Script" uid="uid://cp50klyisysuq" path="res://scenes/character/attacks/shoot/projectile.gd" id="1_0by6f"]
+[ext_resource type="Texture2D" uid="uid://c0d1cdtt80cyj" path="res://assets/Bullet.png" id="2_k4nbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7p5n"]
+size = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_0by6f"]
+colors = PackedColorArray(0.92941177, 0.7529412, 0, 1, 1, 0.13999999, 0.13999999, 0.48235294)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k4nbp"]
+gradient = SubResource("Gradient_0by6f")
+
+[sub_resource type="Curve" id="Curve_0by6f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k4nbp"]
+curve = SubResource("Curve_0by6f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_48fd6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.25
+scale_curve = SubResource("CurveTexture_k4nbp")
+color_ramp = SubResource("GradientTexture1D_k4nbp")
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(0, 1, 0)
+turbulence_influence_min = 0.22000001
+turbulence_influence_max = 0.282
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_0by6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k4nbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e7p5n")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_48fd6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

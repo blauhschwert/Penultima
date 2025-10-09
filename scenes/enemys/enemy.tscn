@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://jhfs5kec40qm"]
+
+[ext_resource type="Script" uid="uid://d3vphlrvds8kw" path="res://scenes/enemys/enemy.gd" id="1_jxan2"]
+[ext_resource type="Texture2D" uid="uid://b7ucqo8e3ha65" path="res://assets/enemys/fairy.png" id="3_imsn2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhlq7"]
+radius = 12.0
+height = 26.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 12
+motion_mode = 1
+script = ExtResource("1_jxan2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_imsn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dhlq7")

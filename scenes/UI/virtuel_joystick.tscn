@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b83ikfjko3npx"]
+
+[ext_resource type="Script" uid="uid://bhg2j3drapsgb" path="res://scenes/UI/virtuel_joystick.gd" id="1_rw37u"]
+[ext_resource type="Texture2D" uid="uid://b7crk3uxmllpv" path="res://assets/StickV2/outer_ring.png" id="2_rw37u"]
+[ext_resource type="Texture2D" uid="uid://bo1f1xyycjwi7" path="res://assets/StickV2/inner_ring.png" id="3_e7ffa"]
+[ext_resource type="Script" uid="uid://bt63knm57o7vx" path="res://scenes/UI/inner_ring.gd" id="4_e7ffa"]
+
+[node name="VirtuelJoystick" type="Node2D"]
+script = ExtResource("1_rw37u")
+
+[node name="OuterRing" type="Sprite2D" parent="."]
+texture = ExtResource("2_rw37u")
+
+[node name="InnerRing" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+texture = ExtResource("3_e7ffa")
+script = ExtResource("4_e7ffa")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 27.0
+
+[connection signal="button_down" from="Button" to="InnerRing" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="InnerRing" method="_on_button_button_up"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SingleShoot" load_steps=5 format=3 uid="uid://cu5m2mvxpgllt"]
+
+[ext_resource type="PackedScene" uid="uid://c6unyds8fh2r8" path="res://scenes/character/attacks/shoot/projectile.tscn" id="1_tj84v"]
+[ext_resource type="Script" uid="uid://ccl2s34lkvvse" path="res://scenes/Resources/Attack/SingleShot.gd" id="2_6pyht"]
+[ext_resource type="Texture2D" uid="uid://bwyrjturf4eby" path="res://assets/Dendalion.png" id="3_vsqow"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2abot"]
+atlas = ExtResource("3_vsqow")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_6pyht")
+title = "DendalionBase"
+texture = SubResource("AtlasTexture_2abot")
+damage = 1.0
+cooldown = 1.75
+speed = 125.0
+metadata/_custom_type_script = "uid://ccl2s34lkvvse"

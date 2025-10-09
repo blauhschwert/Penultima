@@ -1,0 +1,175 @@
+[gd_scene load_steps=15 format=3 uid="uid://bq4qp6n22bdwy"]
+
+[ext_resource type="Script" uid="uid://bojtyqbcwnbio" path="res://scenes/main_game.gd" id="1_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://dtl186wdq35t6" path="res://scenes/world/world.tscn" id="1_s3esy"]
+[ext_resource type="PackedScene" uid="uid://bn8ij7btivfx4" path="res://scenes/character/jade/jade_player.tscn" id="2_72e8q"]
+[ext_resource type="PackedScene" uid="uid://bpvqg3lo87ngr" path="res://scenes/enemys/spawner.tscn" id="4_ihbck"]
+[ext_resource type="PackedScene" uid="uid://yt7dukmbl2dt" path="res://scenes/world/tree/tree_truck.tscn" id="5_5cypo"]
+[ext_resource type="PackedScene" uid="uid://dyansdmcx5dbo" path="res://scenes/UI/ui_controller.tscn" id="5_ipu61"]
+[ext_resource type="PackedScene" uid="uid://dk6x55qwq5kai" path="res://scenes/world/forrest/forrest00.tscn" id="5_o6v7o"]
+[ext_resource type="PackedScene" uid="uid://uy2y0mjld3ea" path="res://scenes/world/forrest/forrest02.tscn" id="5_wjob3"]
+[ext_resource type="Texture2D" uid="uid://b7qm0ux5kbx2e" path="res://assets/restart/restart0.png" id="6_2l77h"]
+[ext_resource type="Theme" uid="uid://cebxge1v74an7" path="res://scenes/UI/game_ui/game_ui.tres" id="6_70vka"]
+[ext_resource type="PackedScene" uid="uid://bl844wo7sr135" path="res://scenes/UI/game_ui/game_ui.tscn" id="6_ygxny"]
+[ext_resource type="Texture2D" uid="uid://dthj665gu3ukc" path="res://assets/restart/restart1.png" id="7_nqdth"]
+[ext_resource type="PackedScene" uid="uid://co1a8s3y6gp6d" path="res://scenes/world/forrest/forrest01.tscn" id="7_wjob3"]
+[ext_resource type="AudioStream" uid="uid://dbye2hfrnfu3f" path="res://Jadevivor .wav" id="13_wjob3"]
+
+[node name="MainGame" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(0, 1)
+script = ExtResource("1_0rdsr")
+
+[node name="Player" parent="." instance=ExtResource("2_72e8q")]
+collision_mask = 9
+
+[node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ihbck")]
+player = NodePath("../Player")
+
+[node name="Node" parent="." instance=ExtResource("1_s3esy")]
+
+[node name="AttackBuffs" type="Node" parent="."]
+
+[node name="Trees" type="Node2D" parent="."]
+
+[node name="Forrest00" parent="Trees" instance=ExtResource("5_o6v7o")]
+position = Vector2(226, -56)
+scale = Vector2(2, 2)
+
+[node name="Forrest01" parent="Trees" instance=ExtResource("5_o6v7o")]
+position = Vector2(-198, -5)
+scale = Vector2(1.5, 1.5)
+
+[node name="Forrest02" parent="Trees" instance=ExtResource("5_o6v7o")]
+position = Vector2(-130, 144)
+scale = Vector2(1.5, 1.5)
+
+[node name="Forrest03" parent="Trees" instance=ExtResource("5_wjob3")]
+position = Vector2(487, 78)
+scale = Vector2(2, 2)
+
+[node name="Forrest04" parent="Trees" instance=ExtResource("5_wjob3")]
+position = Vector2(46, 294)
+scale = Vector2(2, 2)
+
+[node name="treetruck" parent="Trees" instance=ExtResource("5_5cypo")]
+position = Vector2(62, 326)
+
+[node name="treetruck4" parent="Trees" instance=ExtResource("5_5cypo")]
+position = Vector2(522, 112)
+
+[node name="treetruck2" parent="Trees" instance=ExtResource("5_5cypo")]
+position = Vector2(758, 462)
+
+[node name="treetruck3" parent="Trees" instance=ExtResource("5_5cypo")]
+position = Vector2(-127, 418)
+
+[node name="Forrest05" parent="Trees" instance=ExtResource("7_wjob3")]
+position = Vector2(206, 258)
+scale = Vector2(1.5, 1.5)
+
+[node name="Forrest10" parent="Trees" instance=ExtResource("7_wjob3")]
+position = Vector2(511, 380)
+scale = Vector2(1.5, 1.5)
+
+[node name="Forrest06" parent="Trees" instance=ExtResource("7_wjob3")]
+position = Vector2(-87, 522)
+scale = Vector2(1.5, 1.5)
+
+[node name="Forrest09" parent="Trees" instance=ExtResource("7_wjob3")]
+position = Vector2(761, -110)
+scale = Vector2(1.5, 1.5)
+
+[node name="Forrest07" parent="Trees" instance=ExtResource("7_wjob3")]
+position = Vector2(-249, 501)
+scale = Vector2(1.5, 1.5)
+
+[node name="Forrest08" parent="Trees" instance=ExtResource("7_wjob3")]
+position = Vector2(836, 393)
+scale = Vector2(1.5, 1.5)
+
+[node name="Spots" type="Node2D" parent="."]
+
+[node name="HealingSpots" type="Marker2D" parent="Spots"]
+position = Vector2(227, -43)
+
+[node name="HealingSpots2" type="Marker2D" parent="Spots"]
+position = Vector2(-129, 152)
+
+[node name="HealingSpots3" type="Marker2D" parent="Spots"]
+position = Vector2(-198, 11)
+
+[node name="HealingSpots4" type="Marker2D" parent="Spots"]
+position = Vector2(128, 329)
+
+[node name="HealingSpots5" type="Marker2D" parent="Spots"]
+position = Vector2(680, 472)
+
+[node name="HealingSpots6" type="Marker2D" parent="Spots"]
+position = Vector2(764, -10)
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.43, 0.43, 0.43, 0.7137255)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -22.5
+offset_right = 87.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Over"
+
+[node name="Label2" type="Label" parent="GameOver/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = 12.5
+offset_right = 87.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_70vka")
+theme_override_font_sizes/font_size = 16
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="TouchScreenButton" parent="GameOver"]
+position = Vector2(272, 8)
+texture_normal = ExtResource("6_2l77h")
+texture_pressed = ExtResource("7_nqdth")
+
+[node name="GameUI" parent="." instance=ExtResource("6_ygxny")]
+
+[node name="MobileControl" parent="." instance=ExtResource("5_ipu61")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_wjob3")
+autoplay = true
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="add_score_points" from="Spawner" to="." method="_on_spawner_add_score_points"]
+[connection signal="pressed" from="GameOver/Restart" to="." method="_reload_game"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://uy2y0mjld3ea"]
+
+[ext_resource type="Script" uid="uid://0lpxvv2dat5k" path="res://scenes/world/forrest/forrest.gd" id="1_kn32d"]
+[ext_resource type="PackedScene" uid="uid://c7uq32rt1tam6" path="res://scenes/world/forrest/tree01.tscn" id="2_par27"]
+[ext_resource type="PackedScene" uid="uid://cd0sxplmvihgd" path="res://scenes/world/forrest/tree_00.tscn" id="3_ji25u"]
+[ext_resource type="PackedScene" uid="uid://clqmu7iwq4gpm" path="res://scenes/world/forrest/tree_02.tscn" id="4_4l6rr"]
+[ext_resource type="PackedScene" uid="uid://bvmve8imy62sq" path="res://scenes/world/forrest/tree_03.tscn" id="5_djldg"]
+
+[node name="Forrest00" type="Node2D"]
+script = ExtResource("1_kn32d")
+
+[node name="wide" parent="." instance=ExtResource("2_par27")]
+z_index = 2
+position = Vector2(-8, 0)
+
+[node name="wide2" parent="." instance=ExtResource("2_par27")]
+z_index = 2
+position = Vector2(8, 0)
+
+[node name="round" parent="." instance=ExtResource("3_ji25u")]
+z_index = 1
+position = Vector2(24, 0)
+
+[node name="little" parent="." instance=ExtResource("4_4l6rr")]
+z_index = 1
+position = Vector2(40, 0)
+
+[node name="naked" parent="." instance=ExtResource("5_djldg")]
+position = Vector2(0, 0)

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c23rp25i62ns8"]
+
+[ext_resource type="Shader" uid="uid://hxyixun1g5fi" path="res://scenes/enemys/Shaders/Rainbow/rainbow_outline.gdshader" id="1_buoec"]
+
+[resource]
+shader = ExtResource("1_buoec")
+shader_parameter/line_thickness = 0.6000000285
+shader_parameter/sin_frequency = 0.25000000861512
+shader_parameter/sin_offset = 0.0
+shader_parameter/light_offset = 0.5

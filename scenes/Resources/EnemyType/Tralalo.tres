@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=5 format=3 uid="uid://bo6ionl33b67j"]
+
+[ext_resource type="Script" uid="uid://cm7pbi3twmfd" path="res://scenes/Resources/PickUpRessource.gd" id="1_bmnuv"]
+[ext_resource type="Script" uid="uid://ba187r1tj1rg7" path="res://scenes/Resources/EnemyType/EnemyType.gd" id="1_tjwvl"]
+[ext_resource type="Resource" uid="uid://bvm84y2rjtlr6" path="res://scenes/Resources/Gems/ExGem.tres" id="2_bmnuv"]
+[ext_resource type="Texture2D" uid="uid://bjr1q67ma5wc6" path="res://assets/enemys/tralalo.png" id="2_tjwvl"]
+
+[resource]
+script = ExtResource("1_tjwvl")
+title = "Tralalo"
+texture = ExtResource("2_tjwvl")
+health = 3.0
+damage = 5.0
+drops = Array[ExtResource("1_bmnuv")]([ExtResource("2_bmnuv")])
+metadata/_custom_type_script = "uid://ba187r1tj1rg7"

@@ -1,0 +1,313 @@
+[gd_scene load_steps=24 format=3 uid="uid://bn8ij7btivfx4"]
+
+[ext_resource type="Script" uid="uid://c6pe05h80wrwb" path="res://scenes/character/jade/jade_player.gd" id="1_h2mg0"]
+[ext_resource type="PackedScene" uid="uid://ddqja0lblfd8y" path="res://scenes/UI/slots.tscn" id="2_2jwfo"]
+[ext_resource type="Texture2D" uid="uid://be043utx61tci" path="res://assets/PlayerFinal.png" id="2_8ksya"]
+[ext_resource type="Resource" uid="uid://cu5m2mvxpgllt" path="res://scenes/Resources/Attack/DendalionBase.tres" id="3_drcbp"]
+[ext_resource type="Texture2D" uid="uid://bghjkqcfeh3o1" path="res://assets/xp/under.png" id="4_vq3uh"]
+[ext_resource type="Texture2D" uid="uid://cwv7yi6hg40de" path="res://assets/xp/bar.png" id="5_71skk"]
+[ext_resource type="Texture2D" uid="uid://ci0sw3lareo6o" path="res://assets/xp/progress.png" id="5_vq3uh"]
+[ext_resource type="Script" uid="uid://cs7j4v6uff6in" path="res://scenes/state_machine/state_machine.gd" id="5_xv2p5"]
+[ext_resource type="Script" uid="uid://8ok3nefjb2ey" path="res://scenes/character/jade/jade_states/idle.gd" id="6_0jakk"]
+[ext_resource type="Script" uid="uid://ce1dieuuy40pv" path="res://scenes/character/jade/jade_states/walk.gd" id="7_8ksya"]
+[ext_resource type="FontFile" uid="uid://croe4353rn53e" path="res://assets/font/ARCADECLASSIC.TTF" id="7_71skk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yilaf"]
+radius = 11.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6kmyr"]
+radius = 7.0
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_ulo6g"]
+resource_name = "HURT"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JadeAtlas:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [25, 26, 27, 28, 29]
+}
+
+[sub_resource type="Animation" id="Animation_uhkej"]
+resource_name = "IDLE"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JadeAtlas:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_8ksya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JadeAtlas:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JadeAtlas:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3y328"]
+resource_name = "WALK_DOWN"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JadeAtlas:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_ve1mr"]
+resource_name = "WALK_LEFT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JadeAtlas:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JadeAtlas:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.39999998, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 2, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_cyn0w"]
+resource_name = "WALK_RIGHT"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JadeAtlas:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JadeAtlas:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.39999998, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 2, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_6opku"]
+resource_name = "WALK_UP"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JadeAtlas:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.36666667, 0.46666667, 0.56666666, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 4, 3, 4, 5, 4, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulo6g"]
+_data = {
+&"HURT": SubResource("Animation_ulo6g"),
+&"IDLE": SubResource("Animation_uhkej"),
+&"RESET": SubResource("Animation_8ksya"),
+&"WALK_DOWN": SubResource("Animation_3y328"),
+&"WALK_LEFT": SubResource("Animation_ve1mr"),
+&"WALK_RIGHT": SubResource("Animation_cyn0w"),
+&"WALK_UP": SubResource("Animation_6opku")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yilaf"]
+bg_color = Color(0.6, 1, 0.1882353, 1)
+border_width_left = 3
+border_width_top = 1
+border_color = Color(0.27450982, 0.6392157, 0.2509804, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71skk"]
+radius = 25.179358
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+collision_layer = 2
+collision_mask = 41
+motion_mode = 1
+platform_floor_layers = 4294901760
+script = ExtResource("1_h2mg0")
+weapon_class = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Weapons" type="HBoxContainer" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.36200002
+anchor_top = 0.76100004
+anchor_right = 0.669
+anchor_bottom = 1.039
+offset_left = 0.15999603
+offset_top = 2.019989
+offset_right = -0.08001709
+offset_bottom = 1.9799957
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+
+[node name="Slots" parent="UI/Weapons" instance=ExtResource("2_2jwfo")]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 4
+weapon = ExtResource("3_drcbp")
+
+[node name="Slots2" parent="UI/Weapons" instance=ExtResource("2_2jwfo")]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Slots3" parent="UI/Weapons" instance=ExtResource("2_2jwfo")]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="XP" type="TextureProgressBar" parent="UI"]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 10.0
+texture_under = ExtResource("5_71skk")
+texture_over = ExtResource("5_vq3uh")
+texture_progress = ExtResource("4_vq3uh")
+
+[node name="Level" type="Label" parent="UI/XP"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 253.0
+offset_top = 11.0
+offset_right = 315.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("7_71skk")
+text = "LVL :  1"
+
+[node name="JadeAtlas" type="Sprite2D" parent="."]
+texture = ExtResource("2_8ksya")
+hframes = 30
+frame = 9
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_yilaf")
+debug_color = Color(0.9139969, 0.2037997, 0.52944994, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_6kmyr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ulo6g")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 48.0
+offset_bottom = -12.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/fill = SubResource("StyleBoxFlat_yilaf")
+value = 100.0
+show_percentage = false
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_xv2p5")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("6_0jakk")
+metadata/_custom_type_script = "uid://clnv7esq0yhdm"
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("7_8ksya")
+metadata/_custom_type_script = "uid://clnv7esq0yhdm"
+
+[node name="Magnet" type="Area2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet"]
+shape = SubResource("CircleShape2D_71skk")
+
+[connection signal="area_entered" from="Magnet" to="." method="_on_magnet_area_entered"]

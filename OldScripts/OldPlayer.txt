@@ -1,0 +1,37 @@
+Old JadePlayer
+func _physics_process(_delta):
+	var dir = Input.get_vector("move_left","move_right",
+									 "move_up","move_down")
+	
+	velocity = dir * 135
+	move_and_slide()
+	
+	_direction = dir
+
+	if velocity.length() > 0.0:
+		$Jademanition.play_walk_anim(_direction)
+	else:
+		%Jademanition.play_idle_animation()
+
+
+#func _spawn_healing() -> void:
+	#var test = randi() % healing_spots.size()
+	#var new_spot = healing_spots[test]
+	#var delta_mobs = CounterMobs.mob_counter
+	#if (delta_mobs + 1) % 3 == 0:
+		#delta_mobs = 0
+		#print(new_spot)
+
+
+func spawn_mob():
+	if mob_count >= MAX_MOBS:
+		return
+		
+	var new_mob = preload("res://scenes/enemys/weasel/weasel_enemy.tscn").instantiate()
+	%PathFollow2D.progress_ratio = randf()
+	new_mob.global_position = %PathFollow2D.global_position
+	add_child(new_mob)
+	
+	mob_count += 1
+	new_mob.tree_exited.connect(_on_mob_tree_exited)
+	

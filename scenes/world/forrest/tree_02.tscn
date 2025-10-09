@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://clqmu7iwq4gpm"]
+
+[ext_resource type="Texture2D" uid="uid://b0fp2vv0n4bmm" path="res://assets/ground_shadow.png" id="1_g6v8j"]
+[ext_resource type="Texture2D" uid="uid://8d6saxnxafs2" path="res://assets/trees/tree02.png" id="2_qi3ji"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c07cb"]
+radius = 5.9999704
+height = 21.997967
+
+[node name="tree02" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0.36078432, 0.36078432, 0.36078432, 0.41960785)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_g6v8j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_qi3ji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.99999964)
+rotation = -1.5778517
+shape = SubResource("CapsuleShape2D_c07cb")

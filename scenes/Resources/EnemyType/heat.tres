@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://coylyrc1hti2r"]
+
+[ext_resource type="Script" uid="uid://ba187r1tj1rg7" path="res://scenes/Resources/EnemyType/EnemyType.gd" id="1_wxewd"]
+[ext_resource type="Texture2D" uid="uid://c5y0lqbcna4u6" path="res://assets/enemys/heat.png" id="2_yau2b"]
+
+[resource]
+script = ExtResource("1_wxewd")
+title = "Heat"
+texture = ExtResource("2_yau2b")
+metadata/_custom_type_script = "uid://ba187r1tj1rg7"

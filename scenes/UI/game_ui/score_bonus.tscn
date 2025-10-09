@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcuqfjrcka4sx"]
+
+[ext_resource type="Texture2D" uid="uid://dswxa8gkc75lm" path="res://assets/popUp.png" id="1_gs7pg"]
+[ext_resource type="Theme" uid="uid://cebxge1v74an7" path="res://scenes/UI/game_ui/game_ui.tres" id="2_cxsl1"]
+[ext_resource type="Script" uid="uid://bve5equwwpi6v" path="res://scenes/UI/game_ui/score_bonus.gd" id="2_kbh6o"]
+[ext_resource type="AnimationLibrary" uid="uid://uh66t4j7v85k" path="res://scenes/UI/game_ui/animtion/ScoreBonus.res" id="4_kbh6o"]
+
+[sub_resource type="Animation" id="Animation_kbh6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5235988]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6dhp6"]
+_data = {
+&"RESET": SubResource("Animation_kbh6o")
+}
+
+[node name="ScoreBonus" type="Sprite2D"]
+rotation = 0.5235988
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_gs7pg")
+script = ExtResource("2_kbh6o")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.21900001
+anchor_top = 0.312
+anchor_right = 0.84400004
+anchor_bottom = 0.823
+offset_left = -16.008
+offset_top = -15.984
+offset_right = -16.008001
+offset_bottom = -16.002666
+theme = ExtResource("2_cxsl1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6dhp6"),
+&"ScoreBonus": ExtResource("4_kbh6o")
+}
